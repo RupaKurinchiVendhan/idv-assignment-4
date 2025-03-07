@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Vis & Society Assignment 4</title>
+	<link rel="stylesheet" href="https://vis-society.github.io/assignments/report.css" />
+</head>
+
+<body>
+	<header>
+		<h1>
+			<small>Assignment 4</small>
+			Persuasive or Deceptive Visualization?
+		</h1>
+
+		<p>
+			<strong>Rupa Kurinchi-Vendhan</strong> -- <em>rupak272mit.edu</em>
+		</p>
+	</header>
+
+	<main>
+	<h2>Datasets Used</h2>
+	<p>
+		The <a href="https://climatedata.imf.org/">International Monetary Fund (IMF)</a> monitors various climate-related metrics, including greenhouse gas emissions, mitigation and adaptation strategies, the transition to a low-carbon economy, climate finance, and weather impacts. For this analysis, I used IMF GHG indicators for carbon emissions by country and Adaptation indices for vulnerability scores and natural disaster frequency. Additionally, I incorporated <a href="https://data.worldbank.org/indicator/SP.POP.TOTL">population data from the World Bank</a> and retrieved latitude and longitude coordinates using <a href="https://developers.google.com/public-data/docs/canonical/countries_csv">Google's Dataset Publishing API</a>. 
+	</p>
+    <h2>Proposition: The nations least responsible for climate change are the ones most vulnerable to its devastating effects.</h2>
+
+		<section>
+      <h3>FOR the Proposition</h3>
+
+      <figure>
+				<img src="viz1-2.png" alt="" />
+				<figcaption>
+					This visualization compares the per capita CO2 emissions of countries in 2018 with their climate vulnerability using the ND-GAIN Index. The size of each bubble represents the country's population, while the color indicates the continent. This suggests that countries least responsible for emissions are disproportionately vulnerable to climate impacts, supporting the proposition that climate change affects the most vulnerable populations the hardest.
+				</figcaption>
+			</figure>
+
+			<p>
+				<b>Design Decisions and Rationale</b>
+
+			</p>
+
+			<ul>
+				<li><b>Color-Coding by Continent.</b> Score: 1.5 (Mostly Earnest). Initially, all points were the same color to avoid distraction, but I introduced subtle dark hues by continent to emphasize the stark contrast between high-emission, low-vulnerability countries (Global North) and low-emission, high-vulnerability countries (Global South).  This may play into the viewer's preconceived notions and biases of this divide, however, and labeling highly-emitting and highly-vulnerable countries further supports the argument without distorting the data.  Using a single color for all countries would have obscured geographic disparities in emissions and vulnerability. While it is possible that the colors are distracting from the main argument, this additional information adds context rather than misleads, striking a balance between clear regional patterns and the overall trend.</li>
+				<li><b>Bubble Chart.</b> Score: 2 (Fully Earnest). A bubble chart provides a clear quantitative comparison between CO2 emissions and vulnerability within a single figure, making it easier to interpret relationships between the variables. I considered side-by-side maps but found that aggregating the data into a single scatterplot made the relationship between emissions and vulnerability more digestible and easier to compare numerically, without having to divert the viewer's attention between two focal points to infer relationships. The chosen format preserves clarity while keeping the focus on individual countries rather than entire regions.</li>
+				<li><b>Per Capita CO2 Emissions and Population-Scaled Bubbles.</b> Score: 1.5 (Mostly Earnest). Instead of using total emissions, I computed CO2 emissions per capita using World Bank population data to emphasize how much an individual in each country contributes to emissions. I use bubble size to represent population, which visually reinforces the divide between high-population, high-emission, low-vulnerability nations and low-population, low-emission, high-vulnerability nations. This also adds back the dimension of the data lost to the initial data transformation I experimented with. In the process of making this figure, I considered using total emissions, but this would have made China and the U.S. dominate the chart, masking the individual-level disparity in emissions. While this decision frames the data in a persuasive way, it is not misleading--per capita emissions are a widely accepted measure of climate responsibility. Additionally, the bubble size highlights the fact that the countries with the highest per capita carbon emissions are capable of larger impacts. On the other hand, the bubble size scaling may unintentionally emphasize large, high-emission countries like the U.S. and China, while making small island nations or lower-population countries (which are among the most vulnerable) appear less prominent. This could weaken the intended argument by visually downplaying their presence. A potential alternative could be adjusting the bubble scaling to emphasize vulnerability rather than population, or incorporating an additional visual cue (such as an outline or annotation) to highlight small, highly vulnerable nations. However, this might introduce new biases, as it would shift the emphasis away from emissions responsibility. Ultimately, while the visualization effectively conveys the broad global pattern, its scaling choices could subtly influence interpretation in ways that complicate the intended message.</li>
+				<li><b> Selecting a Single Year (2018).</b> Score: -0.5 (Slightly Deceptive). Instead of showing a total or multi-year average, I selected 2018 as a snapshot because it provided a cleaner and more distinguishable trend. When testing averaged or total values, the pattern was still present but less visually striking, so I settled on a recent year where the pattern was clearest. Using only one year ignores short-term fluctuations or potential shifts in emissions and vulnerability over time, which might make the argument seem stronger than it is. I experimented with including a multi-year trend line, but I found that the additional temporal dimension made the message less immediate and harder to interpret at a glance.</li>
+				<li><b>Adjusting Axis Limits</b>. Score: -1 (Slightly Deceptive). The x-axis (Vulnerability Index) was adjusted so that it does not range from 0 to 1, preventing unnecessary white space and keeping the relevant data points more visible. The y-axis (CO2 per capita) was slightly adjusted to ensure that the United States remains within the highest range in the frame, making the high-emission, low-vulnerability pattern more apparent. I experimented with using a log scale to make the trend look more linear, but it compressed the data too much, counteracting my proposition. Additionally, a log transformation would have been an obvious manipulation, making it a poor choice for subtle persuasion.  However, it is possible that the tight layout of data points near the bottom of the figure makes it difficult to interpret overlapping points.</li>
+			</ul>
+    </section>
+
+    <section>
+      <h3>AGAINST the Proposition</h3>
+
+      <figure>
+				<img src="viz2-ezgif.com-video-to-gif-converter.gif" alt="" />
+				<figcaption>
+					This animated choropleth map tracks the total CO2 emissions and the cumulative number of climate-related disasters from 1980 to 2023. Countries are categorized by their total emissions (high, medium, low), and overlaid circle markers represent the number of disasters, with their size growing over time. The animation shows how high-emission countries like the U.S. and China have historically experienced the most natural disasters, challenging the notion that only low-emission countries are the most vulnerable to climate change. As disaster frequency rises globally, the data highlights that high emitters are not exempt from the consequences of climate change.
+				</figcaption>
+			</figure>
+
+			<p>
+				<b>Design Decisions and Rationale</b>
+			</p>
+
+			<ul>
+				<li><b>Cumulative Disaster Counts as Overlaid Circle Markers.</b> Score: 1.5 (Mostly Earnest). Instead of using side-by-side maps for CO2 emissions and disaster counts, I chose to overlay disaster counts as circle markers on the emissions choropleth map. This allows viewers to make a direct spatial comparison between emissions and climate-related disasters. The sizing of the circles is moderate, ensuring that large disaster counts are noticeable but not overwhelming or distracting. The focus naturally draws attention to the largest circles, which tend to correspond to high-emitting countries with large populations and land areas (e.g., U.S., China, India).  Potential deception may come from the fact that the visualization does not normalize disaster frequency by population or land area, which exaggerates differences between large and small countries. A small nation with high per capita disasters would be less visible than a large country with a similar count. Normalizing disaster frequency would have required a different framing that could weaken the argument.</li>
+				<li><b>Absolute CO2 Emissions Instead of Per Capita.</b> Score: -1.5 (Somewhat Deceptive). Unlike the first visualization, which used per capita emissions, this one categorizes countries based on total CO2 emissions into high, medium, and low thresholds. This choice favors larger economies like the U.S. and China, making them appear as the largest contributors to climate change while also experiencing high disaster counts. This subtly challenges the idea that only low-emission countries are vulnerable. There may be potential bias introduced where total emissions inherently favor large, populous economies, while some small but high per capita emitters (e.g., Qatar, UAE) do not stand out as much.</li>
+				<li><b>Thresholding Emissions into High, Medium, and Low Categories.</b> Score: -1 (Slightly Deceptive). Instead of mapping total emissions quantitatively, I categorized them into three tiers (high, medium, low), making the visualization simpler and more digestible. While this grouping strategy preserves the overall trends in the data, it hides nuances. The definition of thresholds is somewhat arbitrary--countries just below the "high" threshold may appear less responsible than they actually are, and small differences between countries are hidden. However, this approach ensures that the contrast is immediately apparent and prevents viewers from having to decode numerical scales, especially given the additional complexity of the natural disaster overlays. I considered a gradient scale for total emissions, but this made it harder to distinguish categories and did not emphasize major emitters as effectively.</li>
+				<li><b>Animated Time Progression of Total Natural Disasters (1980-2023).</b> Score: -0.5 (Slightly Deceptive). Showing the accumulation of disasters over time reinforces the idea that climate impacts are worsening and that high-emission countries are not exempt from the consequences. The animation engages viewers emotionally, making them feel the increase in disasters rather than just seeing a final total. This creates a more persuasive effect, reinforcing the counterargument that climate change affects everyone--even high emitters. It's important to note that viewers might equate more disasters with more negative impact, even though disaster severity varies (e.g., a drought vs. a Category 5 hurricane). In the process of making this visualization, I considered a static 2023 snapshot, which clearly showed that the high-emitting countries like the US and China experienced higher natural disasters, but decided against it in the interest of being earnest and capturing an audience that is biased in support of my initial proposition with a more nuanced perspective that takes into account the changes experienced by all nations. The choice of using natural disasters as the metric of climate impact instead of vulnerability also misrepresents the data--vulnerability indices include natural disasters alongside the ability for a country to protect against and manage damages and loss of life. By using a less holistic measure of how climate change affects countries, we narrow present a skewed argument.</li>
+				<li><b> Impactful Title and a More Neutral Subtitle.</b> Score: -1 (Slightly Deceptive). The title reinforces the claim that climate change affects everyone, even major emitters, by emphasizing universality and escalation. As the first thing that you see when you open the visualization, it calls attention to a different set of emotions within the viewer--instead of anger about issues on climate justice and antagonizing developed countries, it relies on fear of the overwhelming effects of climate change (not to shift the blame away from high emitters but to realize that they are victims of their own actions as well). The phrase "No One Is Safe" is dramatic and attention-grabbing, making it persuasive but slightly loaded. The subtitle is more neutral, and provides a factual description of what the animation shows, ensuring that while the title is impactful, the subtitle does not overstate the argument. The title frames the argument by exaggerating the findings.</li>
+			</ul>
+    </section>
+
+    <section>
+      <h2>Final Reflection</h2>
+
+      <p>This assignment challenged my assumptions about the neutrality of data visualization, forcing me to confront the delicate balance between persuasion and deception. Initially, I believed that the data should dictate the narrative, but as I experimented with different transformations--thresholding, normalizing, adjusting axes, and selecting a single-year snapshot--I realized how much power visualization choices have in framing an argument. The role of visualizations is not just to inform but to shape perception, and this assignment revealed how subtle adjustments can dramatically alter a viewer's interpretation. While my first visualization aligned well with the data and my existing perspective, my second visualization required more intentional framing and design choices to strengthen its argument. I found myself relying on bolder titles, additional text, and category thresholds to make the case more convincing. This made me reflect on how much an audience needs to trust the creator of a visualization, and how easy it is to cross the line between effective argumentation and misleading manipulation.  
+	</p>
+	<p>
+		One of the biggest takeaways from this process was that persuasion is unavoidable--even the most neutral-seeming design choices embed a viewpoint, whether through axis scaling, color selection, or data transformations. However, I found that not all persuasive choices are misleading. Acceptable persuasion clarifies the message while preserving the integrity of the underlying data--for example, choosing a bubble chart over a side-by-side map to make trends more digestible. Misleading choices, on the other hand, obscure or distort the data in ways that directly alter meaning, such as selective data omission, exaggerated scaling, or arbitrary thresholding that changes categorical groupings. The second visualization forced me to engage more in these gray areas, as I had to make more subtle, persuasive tweaks to an argument that challenged some of the underlying data and even my own biases. This assignment ultimately reshaped my understanding of ethical analysis and visualization, showing me that while data can guide a narrative, it never speaks for itself--our choices shape its story. I realized how deception and clarity are sometimes intertwined rather than opposing forces. I initially thought that persuasion compromised objectivity, but I came to see that even earnest visualizations require intentional framing to be effective. The most striking example was in my second visualization, where I had to lean into more persuasive (and slightly deceptive) design choices to make a counterargument that went against both my own biases and some of the data trends. This made me question the subjectivity of visualization ethics--is it misleading to present data in a way that emphasizes one perspective, even if that perspective is valid? Or is it just a necessary tool in communication? How can we leverage these choices to change someone's perspective on a given matter, and better recognize when they are being used against us? What role does trust play in information intake--are we information avoidant to a visualization that goes against prior beliefs?
+		</p>
+    </section>
+	</main>
+</body>
+</html>
